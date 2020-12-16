@@ -10,14 +10,13 @@ class Test(object):
         self.ITERATIONS = iterations
     
     def run(self):
-                
+        
         for _ in tqdm(range(self.ITERATIONS)):
-            digit_1 = int(r.randint(1, 10**15))
-            digit_2 = int(r.randint(1, 10**15))
+            num_1 = int(r.random()*(10**3) + 1)
 
-            t = self.test(digit_1, digit_2)
-            s = self.sol(digit_1, digit_2)
+            t = self.test(num_1)
+            s = self.sol(num_1)
 
             if(t != s):
-                print(f"\n[x] D1 : {digit_1} D2 : {digit_2} T : {t} | S : {s} | {False}")
+                print(f"NUM : {num_1} | T : {t} | S : {s} | {False}")
                 break

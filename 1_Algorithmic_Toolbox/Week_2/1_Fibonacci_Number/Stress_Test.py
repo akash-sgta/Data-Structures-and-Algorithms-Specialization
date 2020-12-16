@@ -1,4 +1,6 @@
 # customize according to contraints
+from tqdm import tqdm
+import random as r
 
 class Test(object):
 
@@ -8,18 +10,13 @@ class Test(object):
         self.ITERATIONS = iterations
     
     def run(self):
-        import random as r
         
-        for _ in range(self.ITERATIONS):
-            num = int(r.randint(1, 35))
-
-            print(f"NUM : {num}", end="\t")
+        for _ in tqdm(range(self.ITERATIONS)):
+            num = int(r.randint(1, 46))
 
             t = self.test(num)
             s = self.sol(num)
 
-            if(t == s):
-                print(True)
-            else:
-                print(f"T : {t} | S : {s} | {False}")
+            if(t != s):
+                print(f"NUM : {num} | T : {t} | S : {s} | {False}")
                 break

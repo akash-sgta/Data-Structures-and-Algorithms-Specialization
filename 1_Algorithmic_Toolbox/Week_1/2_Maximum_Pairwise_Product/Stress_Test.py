@@ -1,4 +1,6 @@
 # customize according to contraints
+from tqdm import tqdm
+import random as r
 
 class Test(object):
 
@@ -8,19 +10,14 @@ class Test(object):
         self.ITERATIONS = iterations
     
     def run(self):
-        import random as r
         
-        for _ in range(self.ITERATIONS):
-            size = int(r.randint(2, 10**2))
-            array = [r.randint(1, 10**3) for _ in range(size)]
-
-            print(f"Size : {size}\nArray : \n{array}", end="\n")
+        for _ in tqdm(range(self.ITERATIONS)):
+            size = int(r.randint(2, (2*(10**5))))
+            array = [r.random()*(2*(10**5)) for _ in range(size)]
 
             t = self.test(array, size)
             s = self.sol(array, size)
 
-            if(t == s):
-                print(True)
-            else:
-                print(f"T : {t} | S : {s} | {False}")
+            if(t != s):
+                print(f"Size : {size}\nArray : {array}\nT : {t} | S : {s} | {False}")
                 break
