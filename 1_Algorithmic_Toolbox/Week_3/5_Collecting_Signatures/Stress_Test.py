@@ -12,17 +12,16 @@ class Test(object):
     def run(self):
         
         for _ in tqdm(range(self.ITERATIONS)):
-            size = int(r.random()*(10**3) + 1)
-            capacity = int(r.random()*(10**6) + 0)
-            matrix = []
+            size = int(r.random()*(10**2) + 1)
+            pairs = list()
             for _ in range(size):
-                matrix.append(((r.random()*(10**6)+0), (r.random()*(10**6)+0)))
-
-            t = self.test(matrix, size, capacity)
-            s = self.sol(matrix, size, capacity)
+                pairs.append((int(r.random()*(10**9) + 1), int(r.random()*(10**9) + 1)))
+            
+            t = self.test(pairs, size)
+            s = self.sol(pairs, size)
 
             if(t != s):
-                print(f"SIZE : {size} | CAP : {capacity}")
-                print(f"MAT : {matrix}")
+                print(f"SIZE : {size}")
+                print(f"PAIRS : {pairs}")
                 print(f"T : {t} | S : {s} | {False}")
                 break
