@@ -12,10 +12,10 @@ class Test(object):
     def run(self):
         
         for _ in tqdm(range(self.ITERATIONS)):
-            size = int(r.random()*(10**5) + 1)
+            size = int(r.random()*(10**1) + 1)
             array = list()
             for _ in range(size):
-                array.append((r.choice([1,-1])*int(r.random()*(10**9) + 1), r.choice([1,-1])*int(r.random()*(10**9) + 1)))
+                array.append((r.choice([1,-1])*int(r.random()*(10**2) + 1), r.choice([1,-1])*int(r.random()*(10**2) + 1)))
 
             t = self.test(array, size)
             s = self.sol(array, size)

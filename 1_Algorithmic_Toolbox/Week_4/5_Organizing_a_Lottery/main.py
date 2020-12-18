@@ -8,7 +8,7 @@ def lottery_fast(segments_pairs, segments_n, points_array, points_n):
         master_pairs.append((segments_pairs[i][1], 'right'))
     for i in range(points_n):
         master_pairs.append((points_array[i], 'points'))
-    master_pairs.sort(key = lambda x: x[0])
+    master_pairs.sort()
 
     segments_count = 0
     point_map = dict()
