@@ -1,5 +1,7 @@
 # Uses python3
 import json
+from pathlib import Path
+import os
 
 
 def get_fibonacci_huge_pisano(num, dig):
@@ -15,7 +17,8 @@ def get_fibonacci_huge_pisano(num, dig):
             b, a = c, b
         return c % dig
 
-    with open("PISANO.json", "r") as readJ:
+    file = os.path.join(Path(__file__).parent, "PISANO.json")
+    with open(file, "r") as readJ:
         PISANO = json.load(readJ)
 
     if num <= 1:
