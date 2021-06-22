@@ -1,10 +1,18 @@
 # Uses python3
-import sys
+def get_change(num):
+    amt = 0
 
-def get_change(m):
-    #write your code here
-    return m
+    amt += num // 10
+    num = num % 10
 
-if __name__ == '__main__':
-    m = int(sys.stdin.read())
+    amt += num // 5
+    num = num % 5
+
+    amt += num
+
+    return amt
+
+
+if __name__ == "__main__":
+    m = int(input())
     print(get_change(m))

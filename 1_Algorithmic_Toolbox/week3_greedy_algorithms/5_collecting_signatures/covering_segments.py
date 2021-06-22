@@ -1,21 +1,27 @@
 # Uses python3
-import sys
-from collections import namedtuple
 
-Segment = namedtuple('Segment', 'start end')
 
-def optimal_points(segments):
-    points = []
-    #write your code here
-    for s in segments:
-        points.append(s.start)
-        points.append(s.end)
-    return points
+def optimal_points(pairs):
+    size = len(pairs)
+    pairs.sort(key=lambda x: x[1])
 
-if __name__ == '__main__':
-    input = sys.stdin.read()
-    n, *data = map(int, input.split())
-    segments = list(map(lambda x: Segment(x[0], x[1]), zip(data[::2], data[1::2])))
-    points = optimal_points(segments)
-    print(len(points))
-    print(*points)
+    i = 0
+    coordinates = list()
+
+    while i < size:
+        current = pairs[i]
+        while (i < size - 1) and (current[1] >= pairs[i + 1][0]):
+            i += 1
+        coordinates.append(current[1])
+        i += 1
+
+    ans = f"{len(coordinates)}\n"
+    points = " ".join([str(i) for i in coordinates])
+    ans += points
+    return ans
+
+
+if __name__ == "__main__":
+    n, *data = map(int, input().split())
+    segments = [(data[i], data[i + 1]) for i in range(1, len(data) - 1, 2)]
+    print(optimal_points(segments))
